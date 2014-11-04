@@ -74,7 +74,7 @@ When the ajax call is complete, m.async is notified and places the results in th
 * stackRef - we could use stackRef(id) and the result would be placed on the stack.
 * other - other scoping mechanisms people might implement. Really, anything you could imagine.
 
-Finally, m.async executes the mechanism's (the policy) configured in the third parameter. This means, any and all behavior that needs to run within the asynchronous call result needs to be placed within the third parameter. This can be anything from tests (in a testing environment) to another asynchronous call.
+Finally, m.async executes the mechanisms (the policy) configured in the third parameter. This means, any and all behavior that needs to run within the asynchronous call result needs to be placed within the third parameter. This can be anything from tests (in a testing environment) to another asynchronous call.
 
 See [mech-ajax][mech-ajax-home-link] for more examples.
 
@@ -82,7 +82,7 @@ See [mech-ajax][mech-ajax-home-link] for more examples.
 
 Allows synchronous mechanisms to act like asynchronous mechanisms. Note that results are returned immediately.
 
-**HINT**: Great for testing. Use asyncify for mocking asychronyous calls.
+**HINT**: Great for testing. Use asyncify for mocking asynchronous calls.
 
 ```javascript
 // asyncify any mechanism
