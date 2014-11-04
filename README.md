@@ -35,7 +35,7 @@ m.asyncify(m.add(14, 5)).go; // immediately returns 19
 m.asyncify("hello").go; // immediately returns "hello"
 ```
 
-*m.asyn* will return an immediate value and still behave as if the call was asynchronous
+*m.async* will return an immediate value and still behave as if the call was asynchronous.
 
 ```javascript
 m.cell("A:1"); // cell to place async call value
@@ -46,7 +46,7 @@ m.async(
 ).go; // returns 19 immediately
 ```
 
-Async will return 19 immediately, the value in cell *A:1* (where we are placing the results of the asynchronous call) is set to 19 and we will have *19* written to the console (m.writeLn is the mechanism m.async runs when the asynchronous call is complete).
+Async will return 19 immediately, the value in cell *A:1* (where the results of the asynchronous call are placed) is set to 19 and 19 is written to the console (m.writeLn is the mechanism m.async runs when the asynchronous call is complete).
 
 See [mech-ajax][mech-ajax-home-link] for detailed documention on *m.async()*.
 
