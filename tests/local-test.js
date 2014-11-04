@@ -1,0 +1,10 @@
+var merge = require("merge");
+m = require("../node_modules/mech-core/dist/mech-core.js");
+m2 = require("../node_modules/mech-math/dist/mech-math.js");
+m3 = require("../node_modules/mech-scope-cell/dist/mech-scope-cell.js");
+m4 = require("..");
+merge.recursive(m, m2);
+merge.recursive(m, m3);
+merge.recursive(m, m4);
+expect = require("chai").expect;
+require("./run-all.js");
