@@ -1,9 +1,9 @@
-function async(mec,dst,bh) {
+function async(mech,dst,bh) {
 	var f = Object.create(AsyncF.prototype);
-	f._mc = mec;
+	f._mc = mech;
 	f._dst = dst;
 	f._bh = bh;
-	if (mec && mec.isMech) {
+	if (mech && mech.isMech) {
 		f._mc._parDir = f;
 	}
 	return f;
@@ -20,14 +20,14 @@ AsyncF.prototype = Object.create ( Object.prototype, {
 	_goRet: { enumerable: false, get: function() {
 		if (this._dst && this._dst.isMech) {
 			var dest = this._dst.go;
-			dest._v = this._v;
+			dest.v = this.v;
 			if (this._bh && this._bh.isMech) {
-				return this._bh.go;	
+				return this._bh.go;
 			} else {
-				return this._v;
+				return this.v;
 			}
 		} else {
-			return this._v;
+			return this.v;
 		}
 	}},
 	goNum: { enumerable: false, get: function() {

@@ -1,5 +1,5 @@
 // mech-async.js
-// version: 0.1.1
+// version: 0.1.2
 // author: Eric Hosick <erichosick@gmail.com> (http://www.erichosick.com/)
 // license: MIT
 (function() {
@@ -8,7 +8,7 @@
 var root = this; // window (browser) or exports (server)
 var m = root.m || {}; // merge with previous or new module
 m._ = m._ || {}; // merge with pervious or new sub-module
-m._["version-async"] = '0.1.1'; // version set through gulp build
+m._["version-async"] = '0.1.2'; // version set through gulp build
 
 // export module for node or the browser
 if(typeof module !== 'undefined' && module.exports) {
@@ -17,12 +17,12 @@ if(typeof module !== 'undefined' && module.exports) {
 	root.m = m;
 } 
 
-function async(mec,dst,bh) {
+function async(mech,dst,bh) {
 	var f = Object.create(AsyncF.prototype);
-	f._mc = mec;
+	f._mc = mech;
 	f._dst = dst;
 	f._bh = bh;
-	if (mec && mec.isMech) {
+	if (mech && mech.isMech) {
 		f._mc._parDir = f;
 	}
 	return f;
@@ -39,14 +39,14 @@ AsyncF.prototype = Object.create ( Object.prototype, {
 	_goRet: { enumerable: false, get: function() {
 		if (this._dst && this._dst.isMech) {
 			var dest = this._dst.go;
-			dest._v = this._v;
+			dest.v = this.v;
 			if (this._bh && this._bh.isMech) {
-				return this._bh.go;	
+				return this._bh.go;
 			} else {
-				return this._v;
+				return this.v;
 			}
 		} else {
-			return this._v;
+			return this.v;
 		}
 	}},
 	goNum: { enumerable: false, get: function() {
@@ -76,7 +76,7 @@ AsyncifyF.prototype = Object.create ( Object.prototype, {
 	go: { enumerable: false, get: function() {
 		var res = (undefined === this._mc || null === this._mc) ? this._mc : this._mc.isMech ? this._mc.go : this._mc;
 		if (this._parDir) {
-			this._parDir._v = res;
+			this._parDir.v = res;
 			return this._parDir._goRet;
 		}
 		return res;
@@ -84,7 +84,7 @@ AsyncifyF.prototype = Object.create ( Object.prototype, {
 	goNum: { enumerable: false, get: function() {
 		var res = (undefined === this._mc || null === this._mc) ? this._mc : this._mc.isMech ? this._mc.goNum : this._mc;
 		if (this._parDir) {
-			this._parDir._v = res;
+			this._parDir.v = res;
 			return this._parDir._goRet;
 		}
 		return res;
@@ -92,7 +92,7 @@ AsyncifyF.prototype = Object.create ( Object.prototype, {
 	goStr: { enumerable: false, get: function() {
 		var res = (undefined === this._mc || null === this._mc) ? this._mc : this._mc.isMech ? this._mc.goStr : this._mc;
 		if (this._parDir) {
-			this._parDir._v = res;
+			this._parDir.v = res;
 			return this._parDir._goRet;
 		}
 		return res;
@@ -100,7 +100,7 @@ AsyncifyF.prototype = Object.create ( Object.prototype, {
 	goArr: { enumerable: false, get: function() {
 		var res = (undefined === this._mc || null === this._mc) ? [this._mc] : this._mc.isMech ? this._mc.goArr : this._mc;
 		if (this._parDir) {
-			this._parDir._v = res;
+			this._parDir.v = res;
 			return this._parDir._goRet;
 		}
 		return res;
@@ -108,7 +108,7 @@ AsyncifyF.prototype = Object.create ( Object.prototype, {
 	goBool: { enumerable: false, get: function() {
 		var res = (undefined === this._mc || null === this._mc) ? false : this._mc.isMech ? this._mc.goBool : this._mc;
 		if (this._parDir) {
-			this._parDir._v = res;
+			this._parDir.v = res;
 			return this._parDir._goRet;
 		}
 		return res;

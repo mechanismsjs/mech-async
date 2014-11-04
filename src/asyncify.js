@@ -9,7 +9,7 @@ AsyncifyF.prototype = Object.create ( Object.prototype, {
 	go: { enumerable: false, get: function() {
 		var res = (undefined === this._mc || null === this._mc) ? this._mc : this._mc.isMech ? this._mc.go : this._mc;
 		if (this._parDir) {
-			this._parDir._v = res;
+			this._parDir.v = res;
 			return this._parDir._goRet;
 		}
 		return res;
@@ -17,7 +17,7 @@ AsyncifyF.prototype = Object.create ( Object.prototype, {
 	goNum: { enumerable: false, get: function() {
 		var res = (undefined === this._mc || null === this._mc) ? this._mc : this._mc.isMech ? this._mc.goNum : this._mc;
 		if (this._parDir) {
-			this._parDir._v = res;
+			this._parDir.v = res;
 			return this._parDir._goRet;
 		}
 		return res;
@@ -25,7 +25,7 @@ AsyncifyF.prototype = Object.create ( Object.prototype, {
 	goStr: { enumerable: false, get: function() {
 		var res = (undefined === this._mc || null === this._mc) ? this._mc : this._mc.isMech ? this._mc.goStr : this._mc;
 		if (this._parDir) {
-			this._parDir._v = res;
+			this._parDir.v = res;
 			return this._parDir._goRet;
 		}
 		return res;
@@ -33,7 +33,7 @@ AsyncifyF.prototype = Object.create ( Object.prototype, {
 	goArr: { enumerable: false, get: function() {
 		var res = (undefined === this._mc || null === this._mc) ? [this._mc] : this._mc.isMech ? this._mc.goArr : this._mc;
 		if (this._parDir) {
-			this._parDir._v = res;
+			this._parDir.v = res;
 			return this._parDir._goRet;
 		}
 		return res;
@@ -41,7 +41,7 @@ AsyncifyF.prototype = Object.create ( Object.prototype, {
 	goBool: { enumerable: false, get: function() {
 		var res = (undefined === this._mc || null === this._mc) ? false : this._mc.isMech ? this._mc.goBool : this._mc;
 		if (this._parDir) {
-			this._parDir._v = res;
+			this._parDir.v = res;
 			return this._parDir._goRet;
 		}
 		return res;
