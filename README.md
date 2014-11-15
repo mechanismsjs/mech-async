@@ -134,8 +134,3 @@ See ./dist for files we build.
 Read documentation in gulpfile.js to see how to setup automated web testing.
 
     $ gulp webserver
-
-
-OR
-
-Right mouse click on /testsweb/index.html and open in browser.
