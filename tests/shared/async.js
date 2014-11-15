@@ -1,12 +1,36 @@
-describe ("Asynchronous (async)", function() {
+// README: 
+// Must run gulp webserver then browse to
+// http://test.development.com:4050 or Access-Control-Allow-Origin exception is thrown
 
-	it ("should not wipeout Object prototype and be a mechanism", function() {
+describe("Asynchronous (async)", function() {
+
+  beforeEach(function() {
+    for (var key in m.cellWorkBook) {
+      if (m.cellWorkBook.hasOwnProperty(key)) {
+        delete m.cellWorkBook[key]; // slow but for tests ok
+      }
+    }
+  });
+
+	it("should not wipeout Object prototype and be a mechanism", function() {
 		var mech = m.async();
 		expect(mech).to.have.property('toString');
 		expect(m._.AsyncF).to.not.eql(undefined);
 	});
 
-	it ("should have correct properties", function() {
+	it("should set _parDir of child mechanisms to parent", function() {
+		var mech1 = m.num(1);
+		var mech2 = m.num(2);
+		var mech3 = m.num(3);
+		var mech4 = m.async(mech1, mech2, mech3);
+		expect(mech1._parDir).to.equal(mech4);
+		expect(mech2._parDir).to.equal(mech4);
+		expect(mech3._parDir).to.equal(mech4);
+
+		var mech5 = m.async();
+	});
+
+	it("should have correct properties", function() {
 		var mech = m.async(m.num(1), m.num(2), m.num(3));
 		expect(mech.mc.isMech).to.be.true;
 		expect(mech.mc.go).to.equal(1);
@@ -16,7 +40,7 @@ describe ("Asynchronous (async)", function() {
 		expect(mech.bh.go).to.equal(3);
 	});
 
-	it ("should do nothing and return undefined when asynchronous mechanisms is not an asynchronous mechanism", function() {
+	it("should do nothing and return undefined when asynchronous mechanisms is not an asynchronous mechanism", function() {
 		var mech = m.async();
 		expect(mech.go).to.be.undefined;
 		expect(mech.goNum).to.be.undefined;
@@ -53,7 +77,7 @@ describe ("Asynchronous (async)", function() {
 		expect(mech5.goBool).to.equal(true);
 	});
 
-	it ("should return the contained value", function() {
+	it("should return the contained value", function() {
 		m.cell("A:1");
 
 		var mech = m.async(
