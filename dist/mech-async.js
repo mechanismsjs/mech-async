@@ -1,5 +1,5 @@
 // mech-async.js
-// version: 0.1.3
+// version: 0.1.4
 // author: Eric Hosick <erichosick@gmail.com> (http://www.erichosick.com/)
 // license: MIT
 (function() {
@@ -8,7 +8,7 @@
 var root = this; // window (browser) or exports (server)
 var m = root.m || {}; // merge with previous or new module
 m._ = m._ || {}; // merge with pervious or new sub-module
-m._["version-async"] = '0.1.3'; // version set through gulp build
+m._["version-async"] = '0.1.4'; // version set through gulp build
 
 // export module for node or the browser
 if (typeof module !== 'undefined' && module.exports) {
@@ -32,8 +32,6 @@ function async(mech, dst, bh) {
 	}
 	return f;
 }
-
-
 
 function AsyncF() {}
 AsyncF.prototype = Object.create(Object.prototype, {
@@ -71,7 +69,9 @@ AsyncF.prototype = Object.create(Object.prototype, {
 		get: function() {
 			if (this._dst && this._dst.isMech) {
 				var dest = this._dst.go;
-				dest.v = this.v;
+				if (dest.isMech) {
+					dest.v = this.v;
+				}
 				if (this._bh && this._bh.isMech) {
 					return this._bh.go;
 				} else {

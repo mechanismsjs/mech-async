@@ -15,8 +15,6 @@ function async(mech, dst, bh) {
 	return f;
 }
 
-
-
 function AsyncF() {}
 AsyncF.prototype = Object.create(Object.prototype, {
 	isMech: {
@@ -53,7 +51,9 @@ AsyncF.prototype = Object.create(Object.prototype, {
 		get: function() {
 			if (this._dst && this._dst.isMech) {
 				var dest = this._dst.go;
-				dest.v = this.v;
+				if (dest.isMech) {
+					dest.v = this.v;
+				}
 				if (this._bh && this._bh.isMech) {
 					return this._bh.go;
 				} else {

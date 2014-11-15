@@ -12,16 +12,22 @@ describe("running web specific tests", function() {
 		}
 	});
 
+	it("should only write a value to a mechanism", function() {
+		var mech = m.async(
+			m.ajax.get("http://test.development.com:4050/testsweb/testdata/test02.json"),
+			m.writeLn("HELLO!")
+		).go;
+	});
+
 	// asyncmc - the asynchronous mechanism to run
 	// dstmc - a reference to the destination mechanism where the result is stored - sets "v" property
 	// optional bhmc - the behavior to run after the asynchronous call is completed
 	it("should be easy to use asynchronous results", function() {
-		m.cell("A:1", 5); // define the cell
+		m.cell("A:1", 2); // define the cell
 		var mech = m.async(
 			m.ajax.get("http://test.development.com:4050/testsweb/testdata/test02.json"),
 			m.cellRef("A:1"),
 			m.assert(m.eqlNum(5, m.cellGet("A:1")), "Expected result to be 5")
 		).go;
-
 	});
 });
