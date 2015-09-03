@@ -1,7 +1,7 @@
 {
   "name": "mech-async",
   "namesub": "async",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "Mechanisms to support asynchronous calls.",
   "main": "./dist/mech-async.js",
   "scripts": {
