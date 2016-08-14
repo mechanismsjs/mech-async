@@ -1,9 +1,3 @@
-[mech-home-link]: https://github.com/mechanisms/mech "Home repository for mechanisms"
-[mech-ajax-home-link]: https://github.com/mechanismsjs/mech-ajax "Ajax mechanisms."
-[mech-mongo-home-link]: https://github.com/mechanismsjs/mech-mongo "Mongo mechanisms."
-[mech-scope-cell-home-link]: https://github.com/mechanismsjs/mech-scope-cell "Cell based scoping mechanisms."
-[mech-scope-stack-home-link]: https://github.com/mechanismsjs/mech-scope-stack "Stack based scoping mechanisms."
-
 # mech-async
 
 Provides mechanisms to support asynchronous calls like those in the [mech-ajax][mech-ajax-home-link] and [mech-mongo][mech-mongo-home-link] libraries.
@@ -45,24 +39,24 @@ MongoClient.connect(url, function(err, db) {
 
 * **mech** - The mechanism that will invoke an asynchronous call (ajax, mongo, async file access, etc.).
 * **dest** (optional) - The destination where the result of the call is placed  (TODO: along with any errors). Scoping is done via [cell scoping][mech-scope-cell-home-link] or traditional [stack scoping][mech-scope-stack-home-link] to name a few.
-* **bh** (optional) - The mechanism (policy) to run when the asynchronous call completes.
+* **bh** (optional) - The mechanism to run when the asynchronous call completes.
 
 Example:
 
 ```javascript
 // testdata.json on server
 {
-	"name" : "A Name",
-	"age" : 23
+  "name" : "A Name",
+  "age" : 23
 }
 ```
 
 ```javascript
 // Run in a web browser
 m.async(
-	m.ajax.get("http://www.example.org/testdata.json"),
-	m.cellRef("A:1"),
-	m.writeLn(m.cellGet("A:1"))
+  m.ajax.get("http://www.example.org/testdata.json"),
+  m.cellRef("A:1"),
+  m.writeLn(m.cellGet("A:1"))
 ).go; // returns immediately
 ```
 
@@ -78,7 +72,7 @@ Finally, m.async executes the mechanisms (the policy) configured in the third pa
 
 See [mech-ajax][mech-ajax-home-link] for more examples.
 
-## <a name="asyncify-mechanism"></a> Asyncify Mechanism
+## <a name="asyncify-mechanism"></a> Asyncify
 
 Allows synchronous mechanisms to act like asynchronous mechanisms. Note that results are returned immediately.
 
@@ -97,9 +91,9 @@ m.asyncify("hello").go; // immediately returns "hello"
 ```javascript
 m.cell("A:1"); // cell to place async call value
 m.async(
-	m.asyncify(m.add(14, 5)),
-	m.cellRef("A:1"),
-	m.writeLn(m.cell("A:1"))
+  m.asyncify(m.add(14, 5)),
+  m.cellRef("A:1"),
+  m.writeLn(m.cell("A:1"))
 ).go; // returns 19 immediately
 ```
 
@@ -111,26 +105,38 @@ Async will return 19 immediately, the value in cell *A:1* (where the results of 
 
 Change directory to your node project.
 
-		$ npm install --save mech-async
+```
+$ npm install --save mech-async
+```
 
 ## Development
 
+## Get Involved!
+
+There are **a lot** of core mechanisms to add. Many of them can be created in a few hours including in-depth tests. Clone [mech-library][mech-library-link] to get started!
+
 ### Setup
 
-		$ npm install
+Install:
 
-### Continuous Rebuild and Testing
+```
+$ npm install
+```
 
-See ./dist for files we build.
+Continuous test:
 
-		$ gulp
+```
+$ gulp
+```
 
-#### Test
+Test:
 
-		$ gulp webtests
+```
+$ gulp webtests
+```
 
-#### Test Server
-
-Read documentation in gulpfile.js to see how to setup automated web testing.
-
-    $ gulp webserver
+[mech-home-link]: https://github.com/mechanisms/mech "Home repository for mechanisms"
+[mech-ajax-home-link]: https://github.com/mechanismsjs/mech-ajax "Ajax mechanisms."
+[mech-mongo-home-link]: https://github.com/mechanismsjs/mech-mongo "Mongo mechanisms."
+[mech-scope-cell-home-link]: https://github.com/mechanismsjs/mech-scope-cell "Cell based scoping mechanisms."
+[mech-scope-stack-home-link]: https://github.com/mechanismsjs/mech-scope-stack "Stack based scoping mechanisms."    
