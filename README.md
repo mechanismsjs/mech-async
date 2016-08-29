@@ -111,30 +111,36 @@ $ npm install --save mech-async
 
 ## Development
 
-## Get Involved!
+### Get Involved!
 
-There are **a lot** of core mechanisms to add. Many of them can be created in a few hours including in-depth tests. Clone [mech-library][mech-library-link] to get started!
+There are **a lot** of core mechanisms just waiting to be created. Many of them can be created in a few hours including in-depth tests. Clone [mech-library][mech-library-link] to get started!
 
 ### Setup
 
 Install:
-
 ```
 $ npm install
 ```
 
 Continuous test:
-
 ```
 $ gulp
 ```
 
 Test:
-
 ```
 $ gulp webtests
 ```
 
+#### Test Server
+
+Read documentation in gulpfile.js to see how to setup automated web testing.
+
+```
+$ gulp webserver
+```
+
+[mech-library-link]: https://github.com/mechanismsjs/mech-library "Clone to easily create new mechanism libraries"
 [mech-home-link]: https://github.com/mechanisms/mech "Home repository for mechanisms"
 [mech-ajax-home-link]: https://github.com/mechanismsjs/mech-ajax "Ajax mechanisms."
 [mech-mongo-home-link]: https://github.com/mechanismsjs/mech-mongo "Mongo mechanisms."

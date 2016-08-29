@@ -1,4 +1,5 @@
 describe("Asyncify (asyncify)", function() {
+
   it("should not wipeout Object prototype and be a mechanism", function() {
     var mech = m.asyncify();
     expect(mech).to.have.property('toString');
@@ -34,7 +35,6 @@ describe("Asyncify (asyncify)", function() {
   });
 
   it("should act like a normal mechanism when not configured within an async aware mechanism", function() {
-    debugger;
     var mech = m.add(m.asyncify(4), 3);
     expect(mech.go).to.equal(7);
     expect(mech.goNum).to.equal(7);

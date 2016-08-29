@@ -22,6 +22,11 @@ AsyncF.prototype = Object.create(Object.prototype, {
       return true;
     }
   },
+  isAsync: {
+    get: function() {
+      return true;
+    }
+  },
   mc: {
     enumerable: false,
     get: function() {

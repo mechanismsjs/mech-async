@@ -80,6 +80,7 @@ describe("Asynchronous (async)", function() {
   it("should return the contained value", function() {
     m.cell("A:1");
 
+    // should set value of cell A:1 to the value from A:1.
     var mech = m.async(
       m.asyncify(m.add(4, 5)),
       m.cellRef("A:1")

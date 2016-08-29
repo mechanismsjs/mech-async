@@ -4,7 +4,6 @@ function asyncify(mc) {
   if (f._mc && f._mc.isMech) {
     f._mc._parDir = f;
   }
-
   return f;
 }
 
@@ -19,7 +18,7 @@ AsyncifyF.prototype = Object.create(Object.prototype, {
     enumerable: false,
     get: function() {
       var res = (undefined === this._mc || null === this._mc) ? this._mc : this._mc.isMech ? this._mc.go : this._mc;
-      if (this._parDir) {
+      if (this._parDir && this._parDir.isAsync) {
         this._parDir.v = res;
         return this._parDir._goRet;
       }
@@ -30,7 +29,7 @@ AsyncifyF.prototype = Object.create(Object.prototype, {
     enumerable: false,
     get: function() {
       var res = (undefined === this._mc || null === this._mc) ? this._mc : this._mc.isMech ? this._mc.goNum : this._mc;
-      if (this._parDir) {
+      if (this._parDir && this._parDir.isAsync) {
         this._parDir.v = res;
         return this._parDir._goRet;
       }
@@ -41,7 +40,7 @@ AsyncifyF.prototype = Object.create(Object.prototype, {
     enumerable: false,
     get: function() {
       var res = (undefined === this._mc || null === this._mc) ? this._mc : this._mc.isMech ? this._mc.goStr : this._mc;
-      if (this._parDir) {
+      if (this._parDir && this._parDir.isAsync) {
         this._parDir.v = res;
         return this._parDir._goRet;
       }
@@ -52,7 +51,7 @@ AsyncifyF.prototype = Object.create(Object.prototype, {
     enumerable: false,
     get: function() {
       var res = (undefined === this._mc || null === this._mc) ? [this._mc] : this._mc.isMech ? this._mc.goArr : this._mc;
-      if (this._parDir) {
+      if (this._parDir && this._parDir.isAsync) {
         this._parDir.v = res;
         return this._parDir._goRet;
       }
@@ -63,7 +62,7 @@ AsyncifyF.prototype = Object.create(Object.prototype, {
     enumerable: false,
     get: function() {
       var res = (undefined === this._mc || null === this._mc) ? false : this._mc.isMech ? this._mc.goBool : this._mc;
-      if (this._parDir) {
+      if (this._parDir && this._parDir.isAsync) {
         this._parDir.v = res;
         return this._parDir._goRet;
       }
